@@ -40,4 +40,14 @@ PeopleRouter.post('/', (req, res) => {
   });
 });
 
+PeopleRouter.delete('/:id', (req, res) => {
+  const { id } = req.params;
+  Person.delete(id).then((person) => {
+    res.json({success: true});
+  }).catch(e => {
+    console.log(e);
+    res.status(500).json({error: 'Something went wrong'});
+  });
+});
+
 module.exports = PeopleRouter;

@@ -34,6 +34,14 @@ const Person = {
       VALUES($1, $2, $3)
       RETURNING *
     `, [name, age, quote]);
+  },
+
+  delete: id => {
+    return db.one(`
+      DELETE FROM people
+      WHERE id=$1
+      RETURNING *
+    `, id);
   }
 };
 
