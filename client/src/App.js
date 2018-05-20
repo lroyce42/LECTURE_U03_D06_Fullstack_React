@@ -6,23 +6,23 @@ import axios from 'axios';
 class App extends Component {
   constructor (props) {
     super(props)
-    this.state = {things: null};
+    this.state = {people: null};
   }
 
   render() {
-    const { things } = this.state;
-    if (!things) { return <div>loading...</div>; }
+    const { people } = this.state;
+    if (!people) { return <div>loading...</div>; }
 
     return (
       <div className="App">
-        {things.map((thing, i) => <li key={i}>{thing}</li>)}
+        {people.map((person, i) => <li key={i}>{person.name}</li>)}
       </div>
     );
   }
 
   componentDidMount () {
-    axios.get('/api/things').then(res => {
-      this.setState({things: res.data})
+    axios.get('/api/people').then(res => {
+      this.setState({people: res.data})
     });
   }
 }

@@ -2,15 +2,14 @@ var express = require('express');
 var app = express();
 const path = require('path');
 const PORT = process.env.PORT || 4200;
+const PeopleRouter = require('./routers/people.js');
 
 // make everything in ./client/build public
 app.use(express.static(path.resolve(__dirname, './client/build')));
 
 // all api routes here
 
-app.get('/api/things', (req, res) => {
-  res.json(['these', 'are', 'some', 'things']);
-});
+app.use('/api/people', PeopleRouter);
 
 app.get('*', (req, res) => {
   console.log(req.headers)
