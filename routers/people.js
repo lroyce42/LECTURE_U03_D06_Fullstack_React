@@ -30,4 +30,14 @@ PeopleRouter.put('/:id', (req, res) => {
   });
 });
 
+PeopleRouter.post('/', (req, res) => {
+  const { name, age, quote } = req.body;
+  Person.create({name, age, quote}).then((person) => {
+    res.json(person);
+  }).catch(e => {
+    console.log(e);
+    res.status(500).json({error: 'Something went wrong'});
+  });
+});
+
 module.exports = PeopleRouter;

@@ -24,6 +24,16 @@ const Person = {
     return db.oneOrNone(
       `SELECT * FROM people WHERE id = $1`, id
     );
+  },
+
+  create: attrs => {
+    const { name, age, quote } = attrs;
+    return db.one(`
+      INSERT into people
+      (name, age, quote)
+      VALUES($1, $2, $3)
+      RETURNING *
+    `, [name, age, quote]);
   }
 };
 
