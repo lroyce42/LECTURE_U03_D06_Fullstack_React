@@ -1,11 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+import PersonForm from './PersonForm';
 
 class PeopleEdit extends React.Component {
   constructor (props) {
     super(props);
     this.state = {name: null, quote: null, age: null, loading: true};
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   render () {
@@ -19,13 +21,7 @@ class PeopleEdit extends React.Component {
     const { name, age, quote } = this.state;
 
     return (
-      <div className={className}>
-        Name: <input value={name} name="name" onChange={this.handleChange}/>
-        Age: <input value={age} name="age" type="number" onChange={this.handleChange}/>
-        Quote: <textarea value={quote} name="quote" onChange={this.handleChange}/>
-        <br/>
-        <button onClick={() => this.handleSubmit()}>Submit!</button>
-      </div>
+      <PersonForm person={{ name, age, quote }} onChange={this.handleChange} onSubmit={this.handleSubmit}/>
     );
   }
 
