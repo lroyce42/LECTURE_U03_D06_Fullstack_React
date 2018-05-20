@@ -3,19 +3,25 @@ import './App.css';
 import PeopleIndex from './PeopleIndex';
 import PeopleShow from './PeopleShow';
 import PeopleEdit from './PeopleEdit';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import PeopleNew from './PeopleNew';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="App">
-          <Route exact path='/people' component={PeopleIndex} />
-          <Route exact path='/people/:id' component={PeopleShow} />
-          <Route exact path='/people/:id/edit' component={PeopleEdit} />
+          <Switch>
+            <Route exact path='/people' component={PeopleIndex} />
+            <Route exact path='/people/new' component={PeopleNew} />
+            <Route exact path='/people/:id' component={PeopleShow} />
+            <Route exact path='/people/:id/edit' component={PeopleEdit} />
+          </Switch>
 
           <br/>
-          <Link to="/people"> All People </Link>
+          <Link to="/people">All People</Link>
+          &nbsp; | &nbsp;
+          <Link to="/people/new">New Person</Link>
         </div>
       </Router>
     );

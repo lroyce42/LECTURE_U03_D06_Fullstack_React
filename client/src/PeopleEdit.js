@@ -13,12 +13,10 @@ class PeopleEdit extends React.Component {
   render () {
     const className = "PeopleEdit page";
 
-    const { person, loading } = this.state;
+    const { loading, name, age, quote } = this.state;
     if (loading) {
       return <div className={className}>loading...</div>;
     }
-
-    const { name, age, quote } = this.state;
 
     return (
       <PersonForm person={{ name, age, quote }} onChange={this.handleChange} onSubmit={this.handleSubmit}/>
