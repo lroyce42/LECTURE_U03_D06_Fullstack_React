@@ -1,29 +1,22 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import axios from 'axios';
+import PeopleIndex from './PeopleIndex';
+import PeopleShow from './PeopleShow';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class App extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {people: null};
-  }
-
   render() {
-    const { people } = this.state;
-    if (!people) { return <div>loading...</div>; }
-
     return (
-      <div className="App">
-        {people.map((person, i) => <li key={i}>{person.name}</li>)}
-      </div>
-    );
-  }
+      <Router>
+        <div className="App">
+          <Route exact path='/people' component={PeopleIndex} />
+          <Route exact path='/people/:id' component={PeopleShow} />
 
-  componentDidMount () {
-    axios.get('/api/people').then(res => {
-      this.setState({people: res.data})
-    });
+          <br/>
+          <Link to="/people"> All People </Link>
+        </div>
+      </Router>
+    );
   }
 }
 
