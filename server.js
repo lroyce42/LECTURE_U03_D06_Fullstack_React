@@ -1,11 +1,15 @@
 var express = require('express');
 var app = express();
 const path = require('path');
+const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 4200;
 const PeopleRouter = require('./routers/people.js');
 
 // make everything in ./client/build public
 app.use(express.static(path.resolve(__dirname, './client/build')));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 // all api routes here
 

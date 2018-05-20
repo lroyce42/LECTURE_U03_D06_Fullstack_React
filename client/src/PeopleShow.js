@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class PeopleShow extends React.Component {
   constructor (props) {
@@ -19,6 +20,9 @@ class PeopleShow extends React.Component {
       <div className={className}>
         <h4>{person.name}</h4>
         <p>{person.quote}</p>
+        <br />
+
+        <Link to={`/people/${person.id}/edit`}> Edit </Link>
       </div>
     );
   }
