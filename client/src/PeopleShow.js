@@ -22,9 +22,21 @@ class PeopleShow extends React.Component {
         <p>{person.quote}</p>
         <br />
 
+        <button onClick={() => this.handleDelete()}>Delete person</button>
+
+        <br/>
+
         <Link to={`/people/${person.id}/edit`}> Edit </Link>
       </div>
     );
+  }
+
+  handleDelete () {
+    const { match, history } = this.props;
+    const { id } = match.params;
+    axios.delete(`/api/people/${id}`).then(res => {
+      history.push('/people'); // another way to redirect (props.history.push)
+    });
   }
 
   componentDidMount () {
