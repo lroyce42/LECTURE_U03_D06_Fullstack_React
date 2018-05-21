@@ -4,7 +4,7 @@ import PeopleIndex from './PeopleIndex';
 import PeopleShow from './PeopleShow';
 import PeopleEdit from './PeopleEdit';
 import PeopleNew from './PeopleNew';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
 
 class App extends Component {
   render() {
@@ -19,9 +19,9 @@ class App extends Component {
           </Switch>
 
           <br/>
-          <Link to="/people">All People</Link>
+          <NavLink exact to="/people">All People</NavLink>
           &nbsp; | &nbsp;
-          <Link to="/people/new">New Person</Link>
+          <NavLink exact to="/people/new">New Person</NavLink>
         </div>
       </Router>
     );
